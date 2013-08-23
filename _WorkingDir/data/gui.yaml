@@ -1,0 +1,12 @@
+client:
+  - name : MainMenu
+    widgets :
+      - type   : Button
+        id     : play_button
+        config :
+          - text : "Play"
+            position : [100, 100]
+            size : [500, 200]
+            textSize : 24
+            textColor : [255, 255, 255]
+            texture : 17

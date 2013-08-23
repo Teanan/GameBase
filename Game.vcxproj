@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{36657C9F-CA6C-427A-905B-0C8F77DC7D49}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
+    <ProjectName>Game</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>_WorkingDir/bin/$(Configuration)/</OutDir>
+    <NMakeBuildCommandLine>cmake -G"NMake Makefiles" -DCMAKE_BUILD_TYPE:string=Debug &amp;&amp; nmake debug game</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>nmake -clean &amp;&amp; cmake -G"NMake Makefiles" -DCMAKE_BUILD_TYPE:string=Debug &amp;&amp; nmake debug game</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>nmake -clean</NMakeCleanCommandLine>
+    <IncludePath>..\libs\SFML\include;..\libs\yaml-cpp\include;..\libs\Boost\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>_WorkingDir/bin/$(Configuration)/</OutDir>
+    <NMakeCleanCommandLine>mingw32-make clean</NMakeCleanCommandLine>
+    <NMakeBuildCommandLine>cmake -G"MinGW Makefiles" -DCMAKE_BUILD_TYPE:string=Release &amp;&amp; mingw32-make game</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>mingw32-make clean &amp;&amp; cmake -G"MinGW Makefiles" -DCMAKE_BUILD_TYPE:string=Release &amp;&amp; mingw32-make game</NMakeReBuildCommandLine>
+    <IncludePath>..\libs\SFML\include;..\libs\yaml-cpp\include;..\libs\Boost\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\libs\Boost\include;..\libs\yaml-cpp\include;..\libs\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-main-d.lib;sfml-system-d.lib;sfml-network-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;libyaml-cppmdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Antania\libs\yaml-cpp\msvc++10;C:\SFML-2.0-rc\lib;..\libs\yaml-cpp\lib\msvc++10;..\libs\SFML\lib\msvc++10;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\libs\Boost\include;..\libs\yaml-cpp\include;..\libs\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>sfml-main.lib;sfml-system.lib;sfml-network.lib;sfml-window.lib;sfml-graphics.lib;libyaml-cppmd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Antania\libs\yaml-cpp\msvc++10;C:\SFML-2.0-rc\lib;..\libs\yaml-cpp\lib\msvc++10;..\libs\SFML\lib\msvc++10;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="GameInputs.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="general.cpp" />
+    <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="GraphicsManager.cpp" />
+    <ClCompile Include="InGame.cpp" />
+    <ClCompile Include="UserEventsHandler.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="NetworkProcessor.cpp" />
+    <ClCompile Include="WorldRenderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AssetBase.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="DataStream.h" />
+    <ClInclude Include="FileDataStream.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="general.h" />
+    <ClInclude Include="Graphic.h" />
+    <ClInclude Include="GraphicsManager.h" />
+    <ClInclude Include="handles.h" />
+    <ClInclude Include="InGame.h" />
+    <ClInclude Include="NetworkPacket.h" />
+    <ClInclude Include="SplashScreen.h" />
+    <ClInclude Include="UserEventsHandler.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="NetworkProcessor.h" />
+    <ClInclude Include="Properties.h" />
+    <ClInclude Include="render.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Split.h" />
+    <ClInclude Include="WorldRenderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CMakeLists.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

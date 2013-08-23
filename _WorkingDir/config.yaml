@@ -1,0 +1,5 @@
+config:
+  - group : graphic
+    values :
+      - name  : fullscreen
+        value : 0
